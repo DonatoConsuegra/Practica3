@@ -9,6 +9,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import org.json.JSONException;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,5 +34,9 @@ public class MainActivityUserList extends AppCompatActivity {
                 "https://api.fake-rest.refine.dev/users",
                 datos, MainActivityUserList.this, (Asynchtask) MainActivityUserList.this);
         ws.execute("GET");
+    }
+    @Override
+    public void processFinish(String result) throws JSONException{
+
     }
 }
