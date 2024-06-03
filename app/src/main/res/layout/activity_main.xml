@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:onClick="clickLogin"
     tools:context=".MainActivity">
 
     <ImageView
@@ -18,8 +19,8 @@
         app:srcCompat="@drawable/logo_uteq" />
 
     <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -39,7 +40,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="Login de usuario"
-                android:textColor="@color/black"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -50,21 +50,23 @@
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="10dp"
                 android:layout_marginEnd="8dp"
                 app:counterEnabled="true"
                 app:counterMaxLength="10"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView">
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.263">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/txt_usuario"
                     android:layout_width="match_parent"
                     android:layout_height="61dp"
+                    android:layout_marginStart="16dp"
                     android:drawableStart="@drawable/ic_action_name"
                     android:hint="Cedula"
-                    android:inputType="number" />
+                    android:inputType="text" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -84,6 +86,7 @@
                     android:id="@+id/txt_clave"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
                     android:drawableStart="@drawable/ic_password"
                     android:hint="Clave"
                     android:inputType="text|textPassword" />
@@ -93,13 +96,13 @@
                 android:id="@+id/butt_ingresar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:onClick="clickLogin"
                 android:text="Ingresar"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 

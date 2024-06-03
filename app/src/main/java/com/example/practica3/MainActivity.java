@@ -1,6 +1,9 @@
 package com.example.practica3;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,7 +13,11 @@ import androidx.core.view.WindowInsetsCompat;
 
 import org.json.JSONException;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import WebServices.Asynchtask;
+import WebServices.WebService;
 
 public class MainActivity extends AppCompatActivity
                         implements Asynchtask {
@@ -26,9 +33,22 @@ public class MainActivity extends AppCompatActivity
             return insets;
         });
     }
+    public void clickLogin(View v){
+        Map<String, String> datos = new HashMap<String, String>();
+
+        EditText txt_usuario = findViewById(R.id.txt_usuario);
+        String usr= txt_usuario.getText().toString();
+        EditText txt_clave = findViewById(R.id.txt_clave);
+        String pass= txt_clave.getText().toString();
+        WebService ws= new WebService(
+                "https://revistas.uteq.edu.ec/ws/login.php?"+
+                        "usr=" + usr + "&pass=" + pass,
+                datos, MainActivity.this, MainActivity.this);
+        ws.execute("GET");
+    }
 
     @Override
     public void processFinish(String result) throws JSONException {
-
+        Toast.makeText(this,result, Toast.LENGTH_LONG).show();
     }
 }
