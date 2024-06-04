@@ -2,6 +2,7 @@ package com.example.practica3;
 
 import android.os.Bundle;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,7 +10,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -37,6 +40,15 @@ public class MainActivityUserList extends AppCompatActivity {
     }
     @Override
     public void processFinish(String result) throws JSONException{
+        TextView txtList = findViewById(R.id.txt_userlist);
 
+        String lista="";
+        JSONArray JSONlista = new JSONArray(result);
+        for(int i=0; i< JSONlista.length();i++){
+            JSONObject usuario = JSONlista.getJSONObject(i);
+            lista+= usuario.getString("first_name") + " " +
+                   usuario.getString("last_name") + "\n";
+        }
+        txtList.setText(lista);
     }
 }
